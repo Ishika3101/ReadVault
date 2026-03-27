@@ -60,4 +60,15 @@ router.get("/sort/:type", async (req, res) => {
   const result = await db.query(`SELECT * FROM books ${query}`);
   res.render("index", { books: result.rows });
 });
+
+router.get("/search", async (req, res) => {
+  const query = req.query.query;
+
+  const result = await db.query(
+    "SELECT * FROM books WHERE title ILIKE $1",
+    [`%${query}%`]
+  );
+
+  res.render("index", { books: result.rows });
+});
 export default router;
