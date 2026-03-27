@@ -1,0 +1,9 @@
+<h1>Edit Book</h1>
+
+<form action="/edit/<%= book.id %>" method="POST">
+  <input name="title" value="<%= book.title %>">
+  <input name="author" value="<%= book.author %>">
+  <input name="rating" value="<%= book.rating %>">
+  <textarea name="notes"><%= book.notes %></textarea>
+  <button type="submit">Update</button>
+</form>
